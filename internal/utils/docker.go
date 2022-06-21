@@ -18,6 +18,12 @@ var Docker = func() *client.Client {
 		fmt.Fprintln(os.Stderr, "Failed to initialize Docker client:", err)
 		os.Exit(1)
 	}
+	// for mock setup
+	err = client.FromEnv(docker)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "Failed to initialize Docker client:", err)
+		os.Exit(1)
+	}
 	return docker
 }()
 
